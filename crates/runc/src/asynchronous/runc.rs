@@ -263,6 +263,7 @@ impl Runc {
     pub async fn state(&self, id: &str) -> Result<Container> {
         let args = vec!["state".to_string(), id.to_string()];
         let res = self.launch(self.command(&args)?, true).await?;
+        println!("{}", res.output);
         serde_json::from_str(&res.output).map_err(Error::JsonDeserializationFailed)
     }
 
