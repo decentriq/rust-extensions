@@ -46,6 +46,7 @@ pub struct Container {
     pub bundle: String,
     pub rootfs: String,
     pub created: String,
+    #[serde(skip_serializing_if = "HashMap::is_empty")]
     pub annotations: HashMap<String, String>,
 }
 
